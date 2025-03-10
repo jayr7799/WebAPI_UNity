@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 const Player = require("./models/player");
 
 //connection for mongoDB
-mongoose.connect("mongodb+srv://jayrossi204:Trace7799@cluster0.jtkdp.mongodb.net/GamesDB?retryWrites=true&w=majority&appName=Cluster0");//("mongodb://localhost:27017/gamedb");
+mongoose.connect("");//("mongodb://localhost:27017/gamedb");
 
 const db = mongoose.connection;
 
