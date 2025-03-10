@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Game</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <h1>Update Game in List</h1>
+    <a href="users.html">Back to All Players</a>
+    <br>
+    <form action="/updatePlayer" method="POST">
+            <input type = "text" name = "playerid" id = "playerid" value = "" hidden ><br>
+
+            <label for="name">Name</label>
+            <input type = "text" name="name" placeholder="name" id="name">
+            <br>
+
+            <label for="score">Score</label>
+            <input type = "text" name="score" id="score">
+            <br>
+
+            <label for="timesPlayed">Times Played</label>
+            <input type = "text" name="timesPlayed" id="timesPlayed">
+            <br>
+
+            <label for="wins">Wins</label>
+            <input type = "text" name="wins" id="wins">
+            <br>
+            <br>
+            <button type="submit">Update Player</button>
+    </form>
+    <script>
+        // Get the query parameters from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Retrieve the values from the query parameters
+        const id = urlParams.get('playerid');
+        const playerName = urlParams.get('name');
+        const playerscore = urlParams.get('score');
+        const playertimesplayed = urlParams.get('timesPlayed');
+        const playerwins = urlParams.get('wins');
+
+
+        // Set the values in the form fields
+        if (playerName) document.getElementById('name').value = playerName;
+        if (playerscore) document.getElementById('score').value = playerscore;
+        if (playertimesplayed) document.getElementById('timesPlayed').value = playertimesplayed;
+        if (playerwins) document.getElementById('wins').value = playerwins;
+        if (id) document.getElementById('playerid').value = id;  // Set the hidden input with the item ID
+    </script>
+</body>
+</html>
