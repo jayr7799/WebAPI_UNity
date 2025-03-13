@@ -14,7 +14,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class FetchData : MonoBehaviour
 {
-    string serverUrl = "http://localhost:3000/player";
+    string serverUrl = "http://localhost:3000/playerLeaderBoard";
     PlayerData playerData;
     public PlayerData soloPlayer;
     //public GameObject player;
@@ -70,20 +70,21 @@ public class FetchData : MonoBehaviour
     public TMP_Text prefab;
     public void GetPlayer()
     {
-        int fontSize = 20;
-        float x = 450;
+        int fontSize = 16;
+        float x = 500;
         float y = 400;
         Vector3 position = new Vector3(x, y, 0);
+        int count = 1;
 
         foreach (var player in allPlayers)
         {
-            int count = 1;
             TMP_Text text = Instantiate(prefab, canvas.transform);
             text.text = $"{count}. {player.name} - High Score:{player.score} Wins: {player.wins}";//"Player UserName: " + player.name + " has a score of " + player.score + $". Users Full name is {player.firstName} {player.lastName} who joined on {player.joined}";
             text.fontSize = fontSize;
             RectTransform nameTransform = text.GetComponent<RectTransform>();
             nameTransform.anchoredPosition = position;
-            position.y -= 50;
+            position.y -= 25;
+            count++;
         }
     }
     

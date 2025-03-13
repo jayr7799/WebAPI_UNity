@@ -16,10 +16,11 @@ public class GameManager : NetworkBehaviour
 
     private void Start()
     {
-        StartFetch(); //loads the database players into list: allPlayers
+         //loads the database players into list: allPlayers
     }
     public override void OnStartClient()
     {
+        StartFetch();
         if (NetworkServer.connections.Count == 1) //makes first play joined it
         {
             itPlayer = NetworkServer.connections[0].identity.gameObject;

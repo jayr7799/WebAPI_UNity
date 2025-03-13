@@ -14,7 +14,6 @@ public class SpawnManager : NetworkManager
         GameObject gameManager = GameObject.Find("GameManager");
         Transform spawnPoint = GetRandomSpawnPoint();
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
-        NetworkServer.AddPlayerForConnection(conn, player);
 
         gm = gameManager.GetComponent<GameManager>();
         gm.players.Add(player);
@@ -40,7 +39,8 @@ public class SpawnManager : NetworkManager
             playerTagComp.playerid = "";
             playerTagComp.wins = 0;
         }
-        
+        NetworkServer.AddPlayerForConnection(conn, player);
+
     }
 
     Transform GetRandomSpawnPoint()

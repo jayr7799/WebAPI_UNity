@@ -11,7 +11,7 @@ public class GameTimer : NetworkBehaviour
     GameManager gameManager;
 
 
-    public GameObject cnvs;
+    //public GameObject cnvs;
     public TMP_InputField newName;
     [SyncVar] string playerName;
 
@@ -34,8 +34,8 @@ public class GameTimer : NetworkBehaviour
         timeRemaining -= Time.deltaTime;
         if (timeRemaining <= 0)
         {
+            EndGame();
             timeRemaining = timeRemainingOG;
-
         }
     }
 
@@ -66,18 +66,18 @@ public class GameTimer : NetworkBehaviour
                     Debug.Log("updated player");
 
                     if (playerTagComp.isIt == true)
-                        gameManager.SetUpdatePlayer(playerTagComp.name, playerTagComp.playerid, playerTagComp.timesPlayed + 1, playerTagComp.score, playerTagComp.wins + 1);
+                        gameManager.SetUpdatePlayer(playerTagComp.playerName, playerTagComp.playerid, playerTagComp.timesPlayed + 1, playerTagComp.score, playerTagComp.wins + 1);
                     else
-                        gameManager.SetUpdatePlayer(playerTagComp.name, playerTagComp.playerid, playerTagComp.timesPlayed + 1, playerTagComp.score, playerTagComp.wins);
+                        gameManager.SetUpdatePlayer(playerTagComp.playerName, playerTagComp.playerid, playerTagComp.timesPlayed + 1, playerTagComp.score, playerTagComp.wins);
                 }
                 if (frozenCount < players.Length)
                 {
                     Debug.Log("updated player");
 
                     if (playerTagComp.isIt == false)
-                        gameManager.SetUpdatePlayer(playerTagComp.name, playerTagComp.playerid, playerTagComp.timesPlayed + 1, playerTagComp.score, playerTagComp.wins + 1);
+                        gameManager.SetUpdatePlayer(playerTagComp.playerName, playerTagComp.playerid, playerTagComp.timesPlayed + 1, playerTagComp.score, playerTagComp.wins + 1);
                     else
-                        gameManager.SetUpdatePlayer(playerTagComp.name, playerTagComp.playerid, playerTagComp.timesPlayed + 1, playerTagComp.score, playerTagComp.wins);
+                        gameManager.SetUpdatePlayer(playerTagComp.playerName, playerTagComp.playerid, playerTagComp.timesPlayed + 1, playerTagComp.score, playerTagComp.wins);
                 }
             }
             else
@@ -101,7 +101,7 @@ public class GameTimer : NetworkBehaviour
                         gameManager.SetupPlayerData("NewPlayer", playerTagComp.timesPlayed + 1, playerTagComp.score, playerTagComp.wins);
                 }
             }
-            cnvs.SetActive(false);
+            //cnvs.SetActive(false);
             SwitchScene();
         }
     }
